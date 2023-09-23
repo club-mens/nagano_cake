@@ -1,0 +1,71 @@
+<h2>注文履歴詳細</h2>
+<table class="table">
+  <tbody>
+    <tr>
+      <th><strong>購入者</strong></th>
+      <th><%= @customer.full_name %></th>
+    </tr>
+    <tr>
+      <th><strong>注文日</strong></th>
+      <th><%= @order.created_at.strftime('%Y/%m/%d') %></th>
+    </tr>
+    <tr>
+      <th><rtrong>配送先</rtrong></th>
+      <th><%= @order.order_address_display%><%= @order.name %></th>
+    </tr>
+    <tr>
+      <th><strong>支払方法</strong></th>
+      <th><%= @order.payment_method_i18n %></th>
+    </tr>
+    <tr>
+      <th><strong>注文ステータス</strong></th>
+      <th>
+        <%= form_with model: @order, url: admin_order_path, method: :patch do |f| %>
+          <%= f.select :status, Order.statuses_i18n.invert, selected: @order.status %>
+          <%= f.submit '更新', class:'btn btn-success' %>
+        <% end %>
+      </th>
+    </tr>
+  </tbody>
+</table>
+<table class="table">
+  <thread>
+    <tr>
+      <th><strong>商品名</strong></th>
+      <th><strong>単価（税込）</strong></th>
+      <th><strong>数量</strong></th>
+      <th><strong>小計</strong></th>
+      <th><strong>制作ステータス</strong></th>
+    </tr>
+  </thread>
+  <tbody>
+    <% @order_items.each do |order_item| %>
+      <tr>
+        <th><%= order_item.item.name %></th>
+        <th><%= order_item.price %></th>
+        <th><%= order_item.quantity %></th>
+        <th><%= order_item.price * order_item.quantity %></th>
+        <th>
+            <%= form_with model: order_item, url: admin_order_order_item_path(@order.id, order_item.id) do |f| %>
+              <%= f.select :making_status, OrderItem.making_statuses_i18n.invert, selected: order_item.making_status %>
+              <%= f.submit '更新', class:'btn btn-success' %>
+            <% end %>
+        </th>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<table class="table">
+  <tr>
+    <th>商品小計</th>
+    <tb><%= @order.total_price.to_s + '円' %></tb>
+  </tr>
+  <tr>
+    <th>送料</th>
+    <tb><%= @order.postage.to_s + '円' %></tb>
+  </tr>
+  <tr>
+    <th>請求金額合計</th>
+    <th><%= @order.order_price.to_s %>円</th>
+  </tr>
+</table>
