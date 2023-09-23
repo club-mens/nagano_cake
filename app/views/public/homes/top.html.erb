@@ -1,1 +1,13 @@
-<h1>topページだよ</h1>
+
+<p>
+    ようこそ、ながのCAKEへ！</br>
+    このサイトは、ケーキ販売のECサイトになります。</br>
+    会員でない方も商品の閲覧はできますが、</br>
+    購入には会員登録が必要になります。</br>
+</p>
+
+<h3>新着商品</h3>
+<!--下記処理が終わり次第記載<%#= render 'public/items/index' , items: @items %>-->
+<!--itemsコントローラーのindexアクションに@items = Item.order('id DESC').limit(3)の記載が必要-->
+
+<%= link_to '全ての商品を見る＞' , items_path %>
