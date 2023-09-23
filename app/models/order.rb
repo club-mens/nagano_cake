@@ -3,16 +3,16 @@ class Order < ApplicationRecord
   belongs_to :customer
   
   enum status: {
-  入金待ち: 0,
-  入金確認: 1,
-  製作中: 2,
-  発送準備中: 3,
-  発送済み: 4
+  waiting_for_payment: 0,
+  confirmred_payment: 1,
+  maiking: 2,
+  shipping_preparation: 3,
+  shipping: 4
   }
-  
+
   enum payment_method: {
-    銀行: 0,
-    クレジットカード: 1
+    transfer: 0,
+    credit_card: 1
   }
 
 
