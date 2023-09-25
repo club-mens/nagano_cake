@@ -3,7 +3,7 @@
   <tbody>
     <tr>
       <th><strong>購入者</strong></th>
-      <th><%= @customer.full_name %></th>
+      <th><%= @order.customer.full_name %></th>
     </tr>
     <tr>
       <th><strong>注文日</strong></th>
@@ -39,19 +39,22 @@
     </tr>
   </thread>
   <tbody>
-    <% @order_items.each do |order_item| %>
-      <tr>
-        <th><%= order_item.item.name %></th>
-        <th><%= order_item.price %></th>
-        <th><%= order_item.quantity %></th>
-        <th><%= order_item.price * order_item.quantity %></th>
-        <th>
-            <%= form_with model: order_item, url: admin_order_order_item_path(@order.id, order_item.id) do |f| %>
-              <%= f.select :making_status, OrderItem.making_statuses_i18n.invert, selected: order_item.making_status %>
-              <%= f.submit '更新', class:'btn btn-success' %>
-            <% end %>
-        </th>
-      </tr>
+    <% order_details.each do |order_details| %>
+      <%= form_with model: [order, order_details], url: admin_order_order_detail_path(order, order_details) do |f| %>
+        <tr class="align-items-center">
+          <td class="text-left"><%= order_details.item.name %></td>
+          <td><%= order_details.price_including_tax.to_s(:delimited) %></td>
+          <td><%= order_details.amount %></td>
+          <td><%= calculate_subtotal(order_details).to_s(:delimited) %></td>
+          <td><%= f.select :production_status, options_for_select(production_status_options(order_details)), class: "form-control" %></td>
+          <td>
+            <%= production_status_display(order_details) %>
+            <% if order_details.production_status == "waiting" || order_details.production_status == "producting" %>
+                <%= f.submit "更新", class: "btn btn-sm btn-success" %>
+              <% end %>
+          </td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
