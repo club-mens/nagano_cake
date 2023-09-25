@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  devise_scope :customer do
+    get '/customers/sign_out' => 'devise/sessions#destroy'
+  end
+
+
   scope module: :public  do
     root to: 'homes#top'
     get '/about' => 'homes#about'
