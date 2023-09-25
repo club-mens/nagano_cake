@@ -20,10 +20,10 @@
           <td><%= f.text_field :explanation %></td>
         </tr>
 
-        <!--<tr>-->
-        <!--  <td>ジャンル</td>-->
-        <!--  <td><%#= f.select :genre_id, @genres, { include_blank: '選択してください' } %></td>-->
-        <!--</tr>-->
+        <tr>
+          <td>ジャンル</td>
+          <td><%= f.select :genre_id, @genres,  { include_blank: '選択してください' } %></td>
+        </tr>
 
         <tr>
           <td>税抜き価格</td>
