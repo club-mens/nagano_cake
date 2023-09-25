@@ -2,26 +2,29 @@ class Public::CartItemsController < ApplicationController
   before_action :authenticate_public
 
   def index
-    if current_custmer
-      
-    end
+    @cart_item =CartItem.all
   end
 
   def update
-
+    cart_item = CartItem.find(params[:id])
+    cart_item.update(cart_item_params)
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
-
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.destroy
+    redirect_to cart_items_path
   end
 
   def destroy_all
-
+    CartItem.destroy_all
+    reidrect_back(fallback_location: root_path)
   end
 
   def create
     cart_item = CartItem.new(cart_item_params)
-    cart_item.end_user_id = current_end_used.id
+    cart_item.customer_id = current_customer.id
     car_item.item_id = cart_item_params[:item_id]
     if CartItem.find_by(item_id: params[:cart_item][:item_id]).present?
       cart_item = CartItem.find_id(item_id: params[:car_item][:item_id])

@@ -26,13 +26,16 @@
           <td>税込価格(税抜き価格)</td>
           <td><%= @price.add_tax_price.to_s(:dalimited) %></td>
         </tr>
-
-        <tr>
-          <td></td>
-          <td><%= @item.is_sale %></td>
-        </tr>
-
       </div>
+
+      <div class="table">
+        <tr>
+          <td><%= f.form_with model:@item_new, local:true do |f| %></td>
+          <td><%= f.hidden_field :item_id, value: @item.id %></td>
+          <td><%= f.select :amount, *[1..10]%></td>
+        </tr>
+      </div>
+
     </div>
   </div>
 </div>
