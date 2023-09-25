@@ -7,15 +7,16 @@ class Admin::ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    #@genres = Genre.all
+    @genres = Genre.all
   end
 
   def create
     @item = Item.new(item_params)
-    if @item.save
+    @item.genre_id = 1
+    if @item.item_image.attach(params[:item][:item_image]) && @item.save
       redirect_to admin_items_path
     else
-      #@genres = Genre.all
+      @genres = Genre.all
       render :new
     end
   end
