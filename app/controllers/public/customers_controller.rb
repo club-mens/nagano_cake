@@ -1,8 +1,9 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_public!
-  
-  def show
 
+
+  def show
+ 
   end
 
   def edit
@@ -10,7 +11,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def update
-
+  
   end
 
   def confirm
@@ -20,4 +21,5 @@ class Public::CustomersController < ApplicationController
   def withdrawal
 
   end
+
 end
