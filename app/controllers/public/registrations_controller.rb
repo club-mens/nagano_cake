@@ -13,7 +13,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    super  
+    super
   end
 
   # GET /resource/edit
