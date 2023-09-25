@@ -29,6 +29,9 @@
            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
           </li>
             <% elsif customer_signed_in? %>
+            
+            <%= current_user.name %>
+            
           <li>
            <%= link_to "マイページ", customers_my_page_path %>
           </li>
@@ -55,8 +58,8 @@
            <%= link_to "ログイン", new_customer_session_path %>
           </li>
         <% end %>
-        <%= yield %>
     </header>
+    <%= yield %>
 
   </body>
 
