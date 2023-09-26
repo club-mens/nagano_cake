@@ -1,8 +1,8 @@
 class Public::CartItemsController < ApplicationController
-  #before_action :authenticate_public!
+  before_action :authenticate_customer!
 
   def index
-    @cart_item =CartItem.all
+    @cart_items = CartItem.all
   end
 
   def update
@@ -25,9 +25,9 @@ class Public::CartItemsController < ApplicationController
   def create
     cart_item = CartItem.new(cart_item_params)
     cart_item.customer_id = current_customer.id
-    car_item.item_id = cart_item_params[:item_id]
+    cart_item.item_id = cart_item_params[:item_id]
     if CartItem.find_by(item_id: params[:cart_item][:item_id]).present?
-      cart_item = CartItem.find_id(item_id: params[:car_item][:item_id])
+      cart_item = CartItem.find_by(item_id: params[:cart_item][:item_id])
       cart_item.amount += params[:cart_item][:amount].to_i
       cart_item.update(amount: cart_item.amount)
       redirect_to cart_items_path
