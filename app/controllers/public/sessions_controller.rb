@@ -1,23 +1,26 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
-  before_action :authenticate_public, only: [:destroy]
+  # before_action :reject_customer, only: [:create]
+  
+  def after_sign_in_path_for(resource)
+    @customer =current_customer
+    root_path
+  end
+  
+  # def reject_customer
+    # @customer = Customer.find_by(email: params[:custmer][:email])
+    # if @customer
+      # if @customer
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
-  def new
 
-  end
 
   # POST /resource/sign_in
-  def create
 
-  end
 
   # DELETE /resource/sign_out
-  def destroy
-
-  end
 
   # protected
 
