@@ -5,10 +5,10 @@ class Order < ApplicationRecord
   has_many :items, through: :order_details
 
   validates :total_price, presence:true
-  validates :shipping_fee, presence:true
+  validates :postage, presence:true
   validates :payment_method, presence:true
-  validates :postal_code, presence:true, numericality: {only_integer: true}
-  validates :shipping_address, presence:true
+  validates :post_code, presence:true, numericality: {only_integer: true}
+  validates :address, presence:true
   validates :name, presence:true
 
   enum status: {

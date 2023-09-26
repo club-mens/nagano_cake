@@ -32,7 +32,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def complete
-
+    
   end
 
   def create
@@ -44,13 +44,13 @@ class Public::OrdersController < ApplicationController
       @order_detail = OrderDetail.new
       @order_detail.item_id = cart_item.item_id
       @order_detail.amount = cart_item.amount
-      @order_detail.price_including_tax = (cart_item.item.price_without_tax * 1.1).floor
+      @order_detail.price = (cart_item.item.add_tax_price).floor
       @order_detail.order_id =  @order.id
       @order_detail.save
     end
 
     current_customer.cart_items.destroy_all
-    redirect_to complete_orders_path
+    redirect_to orders_complete_path
   end
 
 
