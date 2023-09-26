@@ -30,7 +30,7 @@
           </li>
             <% elsif customer_signed_in? %>
             
-            <%= current_user.name %>
+            <%= current_customer.last_name %>
             
           <li>
            <%= link_to "マイページ", customers_my_page_path %>
