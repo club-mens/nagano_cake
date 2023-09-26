@@ -42,9 +42,9 @@ ActiveRecord::Schema.define(version: 2023_09_22_155229) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "customer_id"
-    t.string "post_code"
-    t.string "address"
-    t.string "name"
+    t.string "post_code", null: false
+    t.string "address", null: false
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["customer_id"], name: "index_addresses_on_customer_id"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 2023_09_22_155229) do
   create_table "cart_items", force: :cascade do |t|
     t.integer "customer_id", null: false
     t.integer "item_id", null: false
+    t.integer "amount", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["customer_id"], name: "index_cart_items_on_customer_id"

@@ -1,4 +1,4 @@
-配送先編集
+<h2>配送先編集</h2>
 
 <%= form_with model: @address do |f| %>
   
@@ -15,6 +15,10 @@
   <div>
   宛名
   <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.submit "変更内容を保存" %>
   </div>
 
 <% end %>

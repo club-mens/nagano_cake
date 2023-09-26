@@ -4,24 +4,28 @@
 <%= form_with model: resource, url: customer_registration_path do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
 
+  <div>名前</div>
+
    <div class="field">
     (姓)
-    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+    <%= f.text_field :last_name, placeholder: "令和", autofocus: true, autocomplete: "last_name" %>
   </div>
   
      <div class="field">
-    （名）
-    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+    (名)
+    <%= f.text_field :first_name, placeholder: "道子", autofocus: true, autocomplete: "first_name" %>
+  </div>
+  
+  <div>フリガナ</div>
+  
+  <div class="field">
+    (セイ)
+    <%= f.text_field :last_name_kana, placeholder: "レイワ", autofocus: true, autocomplete: "last_name_kana" %>
   </div>
   
      <div class="field">
-    （セイ）
-    <%= f.text_field :last_name_kana, placeholder: "sample@example.com", autofocus: true, autocomplete: "last_name_kana" %>
-  </div>
-  
-     <div class="field">
-    （メイ）
-    <%= f.text_field :first_name_kana, placeholder: "sample@example.com", autofocus: true, autocomplete: "first_name_kana" %>
+    (メイ)
+    <%= f.text_field :first_name_kana, placeholder: "ミチコ", autofocus: true, autocomplete: "first_name_kana" %>
   </div>
 
   <div class="field">
