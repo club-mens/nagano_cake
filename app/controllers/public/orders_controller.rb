@@ -1,5 +1,5 @@
 class Public::OrdersController < ApplicationController
-  before_action :authenticate_public!
+  before_action :authenticate_customer!
   
   def new
     
