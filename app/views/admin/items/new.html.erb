@@ -22,7 +22,9 @@
 
         <tr>
           <td>ジャンル</td>
-          <td><%= f.select :genre_id, @genres,  { include_blank: '選択してください' } %></td>
+          <td>
+            <%= f.select :genre_id,@genres,{ include_blank: "-- 選択してください --" }%>
+          </td>
         </tr>
 
         <tr>
