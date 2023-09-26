@@ -1,11 +1,11 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_public!
-  
+
   def new
     @order = Order.new
     @addresses = current_customer.addresses
   end
-  
+
   def confirm
     @cart_items = current_customer.cart_items.all
     @order = Order.new(order_params)
@@ -32,11 +32,11 @@ class Public::OrdersController < ApplicationController
     session[:order] = @order
     redirect_to check_orders_path
   end
-  
+
   def complete
-    
+
   end
-  
+
   def create
     cart_items = current_customer.cart_items.all
     @order = Order.new(order_params)
@@ -59,20 +59,20 @@ class Public::OrdersController < ApplicationController
     redirect_to complete_orders_path
   end
 
-  
+
   def index
     @orders = current_customer.orders.all.order(id: 'DESC')
   end
-  
+
   def show
     @order = Order.find(params[:id])
     @order_items = @order.order_items.all
   end
-  
+
   private
 
   def order_params
     params.require(:order).permit(:payment_method, :post_code, :address, :name, :status, :customer_id, :postage, :total_price)
   end
-  
+
 end
