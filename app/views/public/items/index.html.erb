@@ -26,6 +26,7 @@
 
                 <td>
                   <%= link_to item_path(item.id) do %>
+                    <div class="img"><%= image_tag item.item_image, format: "jpg", size: "350x250" %></div>
                     <%= item.name %>
                   <% end %>
                 </td>

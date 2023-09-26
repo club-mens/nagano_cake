@@ -14,7 +14,7 @@ class Admin::ItemsController < ApplicationController
     @item = Item.new(item_params)
     @item.genre_id = 1
     if @item.item_image.attach(params[:item][:item_image]) && @item.save
-      redirect_to admin_items_path
+      redirect_to admin_item_path(@item)
     else
       @genres = Genre.all
       render :new
