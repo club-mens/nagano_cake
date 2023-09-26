@@ -1,6 +1,6 @@
 
 
-<%= form_with model: @customer, url: edit_admin_customer_path(@customer) do |f| %>
+<%= form_with model: @customer, url: admin_customer_path(@customer) do |f| %>
 
 <%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集<br/>
 
@@ -32,7 +32,7 @@
 <%= f.text_field :email %><br/>
 
 会員ステータス
- <%= f.radio_button :is_deleted, "有効" %>有効<%= f.radio_button :is_deleted, "退会" %>退会<br/>
+ <%= f.radio_button :is_deleted, false %>有効<%= f.radio_button :is_deleted, true %>退会<br/>
 
 
 <%= f.submit "変更を保存" %>
