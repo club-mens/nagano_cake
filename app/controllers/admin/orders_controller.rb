@@ -3,15 +3,15 @@ class Admin::OrdersController < ApplicationController
   
   def show
     @order = Order.find(params[:id])
-    @order_items = @order.order_items.all
+    @order_details = @order.order_details.all
   end
   
   def update
     @order = Order.find(params[:id])
-    @order_items = @order.order_items.all
+    @order_details = @order.order_details.all
     if @order.update(order_params)
       if @order.status == "confirmed_payment"
-         @order_items.each do |order_item|
+         @order_details.each do |order_detail|
           order_item.update(making_status: 1)
         end
         redirect_to request.referer

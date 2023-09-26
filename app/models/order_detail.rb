@@ -1,7 +1,10 @@
 class OrderDetail < ApplicationRecord
   belongs_to :order
   belongs_to :item
+<<<<<<< HEAD
+=======
 
+>>>>>>> origin/develop
   enum making_status: {
     not_making: 0,
     pending: 1,

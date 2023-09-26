@@ -1,8 +1,9 @@
 <div class="container">
   <div class="row">
+
     <div class="col-md-3">
       <h4>商品詳細</h4>
-      <%= image_tag @image.item_image, size: "400x300" %>
+      <%= image_tag @item.item_image, size: "400x300" %>
     </div>
 
     <div class="col-md-8 mt-4">
@@ -24,18 +25,21 @@
 
         <tr>
           <td>税込価格(税抜き価格)</td>
-          <td><%= @price.add_tax_price.to_s(:dalimited) %></td>
+          <td><%= @item.add_tax_price %></td>
         </tr>
       </div>
 
       <div class="table">
         <tr>
-          <td><%= f.form_with model:@item_new, local:true do |f| %></td>
+          <td><%= form_with model: @item_new, local:true do |f| %></td>
           <td><%= f.hidden_field :item_id, value: @item.id %></td>
           <td><%= f.select :amount, *[1..10]%></td>
+          <td><%= f.submit "カートに追加", class: "btn"%></td>
+          <% end %>
         </tr>
       </div>
 
     </div>
+
   </div>
 </div>
