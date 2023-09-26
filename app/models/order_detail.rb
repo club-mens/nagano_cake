@@ -1,10 +1,10 @@
 class OrderDetail < ApplicationRecord
   belongs_to :order
   belongs_to :item
-  
-  validates :price_including_tax, presence:true
+
+  validates :price, presence:true
   validates :amount, presence:true
-  
+
   enum making_status: {
     not_making: 0,
     pending: 1,
