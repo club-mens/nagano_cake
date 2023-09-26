@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  has_many :cart_items, dependent: :destroy 
+  has_many :cart_items, dependent: :destroy
   has_many :order_details
   belongs_to :genre
   has_one_attached :item_image
@@ -7,7 +7,7 @@ class Item < ApplicationRecord
 
 
   def add_tax_price
-    (price * 1.10).round
+    (self.price * 1.10).round
   end
 
 end
