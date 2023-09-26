@@ -10,5 +10,10 @@ class Customer < ApplicationRecord
   def full_name
     self.last_name + " " + self.first_name
   end
+  
+  # 下記はログイン時に退会ずみのユーザーが同じアカウントでログインできないようにする記載
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
 
 end

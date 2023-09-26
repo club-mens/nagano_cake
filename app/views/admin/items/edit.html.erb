@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <%= form_with model: @item, url: edit_admin_item_path(@item.id), method: :post do |f| %>
+      <%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
       <table class="table">
         <h4>商品編集</h4>
         <tr>
