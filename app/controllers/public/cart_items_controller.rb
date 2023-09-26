@@ -1,5 +1,5 @@
 class Public::CartItemsController < ApplicationController
-  before_action :authenticate_public
+  #before_action :authenticate_public!
 
   def index
     @cart_item =CartItem.all
@@ -18,7 +18,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destroy_all
-    CartItem.destroy_all
+    @cart_items = CartItem.destroy_all
     reidrect_back(fallback_location: root_path)
   end
 
