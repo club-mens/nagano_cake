@@ -36,7 +36,7 @@ class Public::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
-    @order.save
+    @order.save!
 
     current_customer.cart_items.each do |cart_item|
       @order_detail = OrderDetail.new
