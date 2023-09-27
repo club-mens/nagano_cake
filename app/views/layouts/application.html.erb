@@ -13,7 +13,7 @@
   <body>
     <header >
            <% if admin_signed_in? %>
-           <%= link_to image_tag("logo.jpg"), root_path %>
+           <%= link_to image_tag("logo.jpg", size: "45x45"), root_path %>
           <li>
            <%= link_to "商品一覧", admin_items_path %>
           </li>
@@ -31,11 +31,10 @@
           </li>
             <% elsif customer_signed_in? %>
             
-
-            <%= current_customer.last_name %>
-
-            
-          <%= link_to image_tag("logo.jpg"), root_path %>
+          <%= link_to image_tag("logo.jpg", size: "45x45"), root_path %>
+          
+          <p><%= current_customer.full_name %></p>
+          
           <li>
            <%= link_to "マイページ", customers_my_page_path %>
           </li>
