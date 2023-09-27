@@ -1,53 +1,48 @@
 <div class="container">
   <div class="row">
-
-    <div class="row">
-        <div class="col-md-3">
-            <h4>商品詳細</h4>
-          <div class="d-flex">
-            <div class="mr-5">
-              <%= image_tag @item.item_image, size: "400x300" %>
-            </div>
-          </div>
-        </div>
+    <div class="col-md-5">
+      <h4>商品詳細</h4>
+      <%= image_tag @item.item_image, size: "400x300" if @item.item_image.attached? %>
     </div>
 
-    <div class="row">
-    <div class="col">
-      <div class="table">
+    <div class="col-md-7 mt-4">
+      <table class="table">
         <tr>
-          <td>商品名</td><br>
+          <td>商品名</td>
           <td><%= @item.name %></td>
+        </tr>
 
-
-
-          <td>商品説明</td><br>
+        <tr>
+          <td>商品説明</td>
           <td><%= @item.explanation %></td>
+        </tr>
 
-
-
+        <tr>
           <td>ジャンル</td>
-          |<br>
           <td><%= @item.genre.name %></td>
+        </tr>
 
-
-
+        <tr>
           <td>税込価格(税抜き価格)</td>
           <td><%= @item.add_tax_price %></td>
         </tr>
-      </div>
 
-      <div class="table">
+        <tr>
+          <td>販売ステータス</td>
+          <td><%= @item.is_sale %></td>
+        </tr>
+
+        <div class="table">
         <tr>
           <td><%= form_with model: @item_new, local:true do |f| %></td>
           <td><%= f.hidden_field :item_id, value: @item.id %></td>
           <td><%= f.select :amount, *[1..10]%></td>
-          <td><%= f.submit "カートに追加", class: "btn btn-primary"%></td>
+          <td><%= f.submit "カートに追加", class: "btn"%></td>
           <% end %>
         </tr>
       </div>
 
-     </div>
+      </table>
     </div>
   </div>
 </div>
