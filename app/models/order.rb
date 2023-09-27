@@ -20,8 +20,8 @@ class Order < ApplicationRecord
   }
 
   enum payment_method: {
-    transfer: 0,
-    credit_card: 1
+    credit_card: 0,
+    transfer: 1
   }
 
   def order_address_display
