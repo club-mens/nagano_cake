@@ -10,7 +10,7 @@
       </div>
 
       <div class="mx-auto">
-          <div class="table ">
+          <table class="table ">
             <thead>
               <th>商品名</th>
               <th>単価（税込）</th>
@@ -20,7 +20,7 @@
             </thead>
 
             <tbody>
-            <%= @sum = 0 %>
+            <% @sum = 0 %>
             <% @cart_items.each do |cart_item|%>
 
             <tr>
@@ -46,19 +46,19 @@
               <!--<td>#削除</td>-->
               <td><%= link_to "削除", cart_item_path(cart_item.id) , method: :delete, "data-confirm" => "商品を削除しますか？", class: "btn"%></td>
             </tr>
-            <%= @sum += cart_item.subtotal%>
+            <% @sum += cart_item.subtotal%>
             <% end %>
           </tbody>
-        </div>
+        </table>
       </div>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-md-9 offset-md-1">
+    <div class="col-md-7 offset-md-1">
       <%= link_to "買い物を続ける", root_path, class: "btn"%>
-        "合計金額"<%= @sum %>
     </div>
+    "合計金額"<%= @sum %>
   </div>
 
   <div class="row">
