@@ -12,6 +12,7 @@
           </tr>
         </thread>
         <tbody>
+          <% @sum = 0 %>
           <% @cart_items.each do |cart_item| %>
             <tr>
               <td><%= image_tag cart_item.item.item_image, :size => "80x80" %>　<%= cart_item.item.name %></td>
@@ -19,6 +20,7 @@
               <td><%= cart_item.amount %></td>
               <td><%= cart_item.item.add_tax_price * cart_item.amount %></td>
             </tr>
+          <%= @sum += cart_item.subtotal%>
           <% end %>
         </tbody>
       </table>
@@ -32,11 +34,11 @@
           </tr>
           <tr>
             <th>商品合計</th>
-            <th>¥<%= @order.total_price.to_s(:delimited) %></th>
+            <th>¥<%= @sum %></th>
           </tr>
           <tr>
             <th>請求金額</th>
-            <th><%= @order.postage + @order.total_price %></th>
+            <th><%= @order.postage + @sum %></th>
           </tr>
         </tbody>
       </table>

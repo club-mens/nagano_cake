@@ -23,7 +23,7 @@
             <%= f.radio_button :select_address, 1 %>
             <strong><%= f.label :select_address_1, '登録済住所から選択' %></strong><br>
             <div class="pl-3">
-             <%= f.collection_select :address_id, current_customer.addresses.all, :id, :address_display, {}, {class: 'form-select form-control'} %>
+             <%= f.collection_select :address_id, current_customer.addresses.all, :id, :address_display, {}%>
             </div>
           </div>
           <div class="mb-3">
