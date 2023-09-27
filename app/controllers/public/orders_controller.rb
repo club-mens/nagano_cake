@@ -6,35 +6,35 @@ class Public::OrdersController < ApplicationController
     @order = Order.new
   end
 
- def confirm
+  def confirm
     @order = Order.new(order_params)
-    if params[:order][:select_address] == "0"
+  if params[:order][:select_address] == "0"
       @order.name = current_customer.full_name
       @order.address = current_customer.address
       @order.post_code = current_customer.post_code
-    elsif params[:order][:select_address] == "1"
+  elsif params[:order][:select_address] == "1"
       @address = Address.find(params[:order][:address_id])
       @order.post_code = @address.post_code
       @order.address = @address.address
       @order.name = @address.name
-    elsif params[:order][:select_address] == "2"
+  elsif params[:order][:select_address] == "2"
       @order.post_code = params[:order][:post_code]
       @order.address = params[:order][:address]
       @order.name = params[:order][:name]
-      unless @order.valid_columns?(:name, :address, :post_code)
+    unless @order.valid_columns?(:name, :address, :post_code)
         @addresses = current_customer.addresses
         render :new
-      end
-    else
-      redirect_to new_order_path
     end
+  else
+      redirect_to new_order_path
+  end
     @cart_items = current_customer.cart_items
   end
-
+  
   def complete
     
   end
-
+  
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
