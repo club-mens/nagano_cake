@@ -11,7 +11,7 @@
           </tr>
           <tr>
             <th>配送先</th>
-            <th><%= @order.order_address_display %>   <%= @order.name %></th>
+            <th><%= @order.post_code %><%= @order.address %><%= @order.name %></th>
           </tr>
           <tr>
             <th>支払方法</th>
@@ -30,7 +30,7 @@
         <tbody>
           <tr>
             <th>商品合計</th>
-            <th><%= @order.total_item_amount.to_s(:delimited) %></th>
+            <th>¥<%= @order.total_price - @order.postage %></th>
           </tr>
           <tr>
             <th>配送料</th>
@@ -38,7 +38,7 @@
           </tr>
           <tr>
             <th>ご請求額</th>
-            <th><%= @order.total_price.to_s(:delimited) %></th>
+            <th><%= @order.total_price %></th>
           </tr>
         </tbody>
       </table>
@@ -57,13 +57,15 @@
           </tr>
         </thread>
         <tbody>
+          <% @sum = 0 %>
           <% @order_details.each do |order_detail| %>
             <tr>
               <th><%= order_detail.item.name %></th>
               <th><%= order_detail.price %></th>
-              <th><%= order_detail.quantity %></th>
-              <th><%= order_detail.price * order_detail.quantity %></th>
+              <th><%= order_detail.amount %></th>
+              <th><%= order_detail.price * order_detail.amount %></th>
             </tr>
+          <%# @sum += order_detail.subtotal%>
           <% end %>
         </tbody>
       </table>

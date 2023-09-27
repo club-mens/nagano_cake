@@ -11,7 +11,7 @@
     </tr>
     <tr>
       <th><rtrong>配送先</rtrong></th>
-      <th><%= @order.order_address_display%><%= @order.name %></th>
+      <th><%= order.post_code %><%= order.address %><%= order.name %></th>
     </tr>
     <tr>
       <th><strong>支払方法</strong></th>
@@ -61,14 +61,14 @@
 <table class="table">
   <tr>
     <th>商品小計</th>
-    <tb><%= @order.total_price.to_s + '円' %></tb>
+    <tb><%= @order.postage + '円' %></tb>
   </tr>
   <tr>
     <th>送料</th>
-    <tb><%= @order.postage.to_s + '円' %></tb>
+    <tb><%= @order.postage + '円' %></tb>
   </tr>
   <tr>
     <th>請求金額合計</th>
-    <th><%= @order.order_price.to_s %>円</th>
+    <th><%= @order.postage %>円</th>
   </tr>
 </table>
