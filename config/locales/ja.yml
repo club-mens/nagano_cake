@@ -12,11 +12,12 @@ ja:
         transfer: "銀行振込"
         credit_card: "クレジットカード"
 
-    order_details:
-      not_making: "着手不可"
-      pending: "製作待ち"
-      making: "製作中"
-      maked: "制作完了"
+    order_detail:
+      making_status:
+        not_making: "着手不可"
+        pending: "製作待ち"
+        making: "製作中"
+        maked: "制作完了"
 
   activerecord:
     errors:
