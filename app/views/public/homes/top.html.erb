@@ -10,4 +10,27 @@
 <!--下記処理が終わり次第記載<%#= render 'public/items/index' , items: @items %>-->
 <!--itemsコントローラーのindexアクションに@items = Item.order('id DESC').limit(3)の記載が必要-->
 
+          <tbody>
+            <div class="container">
+              <div class="row">
+                <% @items.each do |item| %>
+              <tr>
+
+
+                <div class="col-sm-12 col-md-2 col-lg-3">
+                    <td>
+                      <%= link_to item_path(item.id) do %>
+                        <div class="img"><%= image_tag item.item_image, format: "jpg", size: "250x150" %></div>
+                        <%= item.name %>
+                      <% end %>
+                      <p><%= item.price %>円</p>
+                    </td>
+                </div>
+              </tr>
+            <% end %>
+              </div>
+            </div>
+
+          </tbody>
+
 <%= link_to '全ての商品を見る＞' , items_path %>
