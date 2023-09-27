@@ -8,6 +8,8 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @order = Order.new(order_params)
+    @order.postage = 800
+    @order.total_price = 0
   if params[:order][:select_address] == "0"
       @order.name = current_customer.full_name
       @order.address = current_customer.address
@@ -21,20 +23,16 @@ class Public::OrdersController < ApplicationController
       @order.post_code = params[:order][:post_code]
       @order.address = params[:order][:address]
       @order.name = params[:order][:name]
-    unless @order.valid_columns?(:name, :address, :post_code)
-        @addresses = current_customer.addresses
-        render :new
-    end
   else
       redirect_to new_order_path
   end
     @cart_items = current_customer.cart_items
   end
-  
+
   def complete
-    
+
   end
-  
+
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
