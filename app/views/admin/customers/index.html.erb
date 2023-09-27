@@ -1,29 +1,36 @@
-<h2>会員一覧</h2>
+<div class="container py-2">
+  <div class="row mt-2 mb-3 offset-0 text-center">
+    <h4>会員一覧</h4>
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>会員ID</th>
-      <th>氏名</th>
-      <th>メールアドレス</th>
-      <th>ステータス</th>
-    </tr>
-  </thead>
+  <div class="row">
+    <div class="col-10 mx-auto">
+      <table class="table table-list">
+        <thead>
+          <tr>
+            <th>会員ID</th>
+            <th>氏名</th>
+            <th>メールアドレス</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
 
-  <tbody>
-    <% @customers.each do |customer| %>
-    <tr>
-      <td><%= customer.id %></td>
-      <td><%= link_to customer.full_name, admin_customer_path(customer) %></td>
-      <td><%= customer.email %></td>
-      <td>
-        <% if customer.is_deleted == true %>
-          <p>退会</p>
-        <% else %>
-          <p>有効</p>
-        <% end %>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+        <tbody>
+          <% @customers.each do |customer| %>
+          <tr>
+            <td><%= customer.id %></td>
+            <td><%= link_to customer.full_name, admin_customer_path(customer) %></td>
+            <td><%= customer.email %></td>
+            <td>
+              <% if customer.is_deleted == true %>
+                <p>退会</p>
+              <% else %>
+                <p>有効</p>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
