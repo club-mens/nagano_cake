@@ -24,5 +24,9 @@ class Order < ApplicationRecord
     credit_card: 1
   }
 
+  def order_address_display
+    post_code + address + name
+  end
+
 
 end
