@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h4>商品一覧</h4>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="card">
+      <div class="admins_item_index">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>商品ID</th>
+              <th>商品名</th>
+              <th>税抜き価格</th>
+              <th>ジャンル</th>
+              <th>ステータス</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @items.each do |item| %>
+              <tr>
+                <td><%= item.id %></td>
+
+                <td>
+                  <%= link_to item_path(item.id) do %>
+                    <div class="img"><%= image_tag item.item_image, format: "jpg", size: "350x250" %></div>
+                    <%= item.name %>
+                  <% end %>
+                </td>
+
+                <td><%= item.price %>円</td>
+
+                <td><%= item.genre.name %></td>
+
+                <td>
+                  <% if item.is_sale == false %>
+                    <td>販売中</td>
+                  <% else %>
+                    <td>販売停止中</td>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
