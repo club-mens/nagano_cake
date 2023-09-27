@@ -1,7 +1,6 @@
 <div class="container py-5">
-  
   <div class="row mt-2 mb-3 offset-1 text-center">
-    <h3><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h3>
+    <h4 class="p-2 mb-2 bg-light text-dark"><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h4>
   </div>
   <div class="row">
     <div class="col-10 mx-auto">
@@ -45,9 +44,9 @@
           <td>会員ステータス</td>
           <td>
             <% if @customer.is_deleted == true %>
-              退会
+              <p class="text-secondary">退会</p>
             <% else %>
-              有効
+              <p class="text-success">有効</p>
             <% end %>
           </td>
         </tr>
@@ -56,10 +55,10 @@
   </div>
   <div class="row">
     <div class="col-3 offset-2">
-      <%= button_to "編集する", edit_admin_customer_path(@customer), method: :get %>
+      <%= link_to "編集する", edit_admin_customer_path(@customer), class: "btn btn-success", method: :get %>
     </div>
     <div class="col-3">
-      <%= button_to "注文履歴一覧を見る", orders_path(@customer), method: :get %>
+      <%= link_to "注文履歴一覧を見る", orders_path(@customer), class: "btn btn-primary", method: :get %>
     </div>
   </div>
 </div>

@@ -1,7 +1,7 @@
 <div class="container py-5">
   <%= form_with model: @customer, url: admin_customer_path(@customer) do |f| %>
   <div class="row mt-2 mb-3 offset-1 text-center">
- <h3><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h3>
+ <h4 class="p-2 mb-2 bg-light text-dark"><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h4>
   </div>
   <div class="row">
     <div class="col-10 mx-auto">
@@ -11,45 +11,53 @@
           <td><%= @customer.id %></td>
         </tr>
         
-        
         <tr>
           <td>氏名</td>
           <td><%= f.text_field :last_name %> <%= f.text_field :first_name %></td>
         </tr>
+        
+        <tr>
+          <td>フリガナ</td>
+          <td><%= f.text_field :last_name_kana %> <%= f.text_field :first_name_kana %></td>
+        <tr>
 
-
-<tr>
-<tr>フリガナ<tr>
-<tr><%= f.text_field :last_name_kana %> <%= f.text_field :first_name_kana %><tr>
-<tr>
-
-<tr>
-<tr>郵便番号<tr>
-<tr><%= f.text_field :post_code %><tr>
-<tr>
+        <tr>
+          <td>郵便番号</td>
+          <td><%= f.text_field :post_code %></td>
+        <tr>
     
-<tr>
-<tr>住所<tr>
-<tr><%= f.text_field :address %><tr>
-<tr>
+        <tr>
+          <td>住所</td>
+          <td><%= f.text_field :address %></td>
+        <tr>
     
-<tr>    
-<tr>電話番号<tr>
-<tr><%= f.text_field :phone_number %><tr>
-<tr>
+        <tr>    
+          <td>電話番号</td>
+          <td><%= f.text_field :phone_number %></td>
+        <tr>
 
-<tr>
-<tr>メールアドレス<tr>
-<tr><%= f.text_field :email %><tr>
-<tr>
+        <tr>
+          <td>メールアドレス</td>
+          <td><%= f.text_field :email %></td>
+        <tr>
 
-<tr>
-<td>会員ステータス</td>
-<td><%= f.radio_button :is_deleted, false %>有効<%= f.radio_button :is_deleted, true %>退会</td>
-</tr>
+        <tr>
+          <td>会員ステータス</td>
+          <td>
+            <%= f.radio_button :is_deleted, false %>
+              有効
+            <%= f.radio_button :is_deleted, true %>
+              退会
+          </td>
+        </tr>
 
-<tr>
-<%= f.submit "変更を保存" %>
-</tr>
-
-<% end %>
+        <tr>
+          <td>
+            <button type="submit" class="btn btn-success">変更を保存</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <% end %>
+</div>
